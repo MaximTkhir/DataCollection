@@ -1,0 +1,88 @@
+def find_min_max(numbers):
+    min_num = min(numbers)
+    max_num = max(numbers)
+    return min_num, max_num
+
+def sort_words(words):
+    sorted_words = sorted(words)
+    return sorted_words
+
+def dict_to_tuples(students):
+    if isinstance(students, dict):
+        tuples = [(name, grade) for name, grade in students.items()]
+        return tuples
+    return None
+
+def unique_words(text):
+    if isinstance(text, str):
+        words = text.split()
+        unique_words = set(words)
+        return unique_words
+    return None
+
+def intersection(set1, set2):
+    if isinstance(set1, set) and isinstance(set2, set):
+        common_elements = set1.intersection(set2)
+        return common_elements
+    return None
+
+class Company:
+    def __init__(self):
+        self.employees = {}
+
+    def add_employee(self, name):
+        if isinstance(name, str):
+            self.employees[name] = True
+
+    def remove_employee(self, name):
+        if name in self.employees:
+            del self.employees[name]
+
+    def get_employees(self):
+        return list(self.employees.keys())
+
+# Поиск минимального и максимального числа
+numbers = input("Введите список чисел через пробел: ").split()
+numbers = list(map(int, numbers))
+min_num, max_num = find_min_max(numbers)
+print("Наименьшее число:", min_num)
+print("Наибольшее число:", max_num)
+
+# Сортировка списка слов
+words = input("Введите список слов через пробел: ").split()
+sorted_words = sort_words(words)
+print("Отсортированный список слов:", sorted_words)
+
+# Преобразование словаря в список кортежей
+students = {"Maxim": 45, "Aleksandr": 99, "Mark": 75}
+tuples = dict_to_tuples(students)
+if tuples:
+    print("Список кортежей:", tuples)
+else:
+    print("Некорректный тип данных для функции dict_to_tuples")
+
+# Поиск уникальных слов в тексте
+text = input("Введите текст: ")
+unique = unique_words(text)
+if unique:
+    print("Уникальные слова:", unique)
+else:
+    print("Некорректный тип данных для функции unique_words")
+
+# Поиск общих элементов двух множеств
+set1 = {1, 2, 3, 4, 5}
+set2 = {4, 5, 6, 7, 8}
+common = intersection(set1, set2)
+if common:
+    print("Общие элементы:", common)
+else:
+    print("Некорректный тип данных для функции intersection")
+
+# Управление списком сотрудников компании
+company = Company()
+company.add_employee("Maxim")
+company.add_employee("Aleksandr")
+company.add_employee("Mark")
+print("Список сотрудников:", company.get_employees())
+company.remove_employee("Mark")
+print("Список сотрудников после увольнения:", company.get_employees())
